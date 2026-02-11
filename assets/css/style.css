@@ -160,6 +160,30 @@ align-items: center;
 .section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px;flex-wrap:wrap}
 .section__head h2{margin:0;font-size:30px}
 .section__head p{margin:0;color:var(--muted);max-width:720px}
+#why .section__head{
+  display: block;
+}
+#projects .section__head{
+  display: block;
+}
+
+#projects .section__head p{
+  margin-top: 18px;
+}
+
+#solutions{
+  padding-top: 20px;
+}
+#projects{
+  padding-top: 40px;
+}
+
+
+
+#why .section__head p{
+  margin-top: 18px;
+}
+
 
 .section--belowfold{
   padding-top: 90px;   /* adjust: 80–180px */
@@ -205,10 +229,50 @@ align-items: center;
   background:rgba(255,255,255,.03);
 }
 .feat__icon{
-  width:34px;height:34px;border-radius:12px;margin-bottom:10px;
-  background: linear-gradient(135deg, rgba(124,58,237,.9), rgba(34,197,94,.85));
-  box-shadow: var(--shadow);
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: none;
+  background: rgba(255,255,255,.06);
 }
+
+.grid--3 .feat:nth-child(1) .feat__icon{
+  background: linear-gradient(135deg, rgba(59,130,246,.30), rgba(34,197,94,.18));
+  color: rgba(255,255,255,.96);
+}
+
+.grid--3 .feat:nth-child(2) .feat__icon{
+  background: linear-gradient(135deg, rgba(34,197,94,.26), rgba(16,185,129,.16));
+  color: rgba(255,255,255,.96);
+}
+
+.grid--3 .feat:nth-child(3) .feat__icon{
+  background: linear-gradient(135deg, rgba(236,72,153,.22), rgba(168,85,247,.18));
+  color: rgba(255,255,255,.96);
+}
+
+.grid--3 .feat:nth-child(4) .feat__icon{
+  background: linear-gradient(135deg, rgba(245,158,11,.22), rgba(59,130,246,.16));
+  color: rgba(255,255,255,.96);
+}
+
+.grid--3 .feat:nth-child(5) .feat__icon{
+  background: linear-gradient(135deg, rgba(14,165,233,.22), rgba(99,102,241,.16));
+  color: rgba(255,255,255,.96);
+}
+
+.grid--3 .feat:nth-child(6) .feat__icon{
+  background: linear-gradient(135deg, rgba(168,85,247,.22), rgba(34,197,94,.14));
+  color: rgba(255,255,255,.96);
+}
+
+/* inline SVG icons are mobile-first only (desktop keeps the original gradient square) */
+.feat__svg{ display:block; width:22px; height:22px; opacity:.95; }
 .feat h3{margin:0 0 6px;font-size:16px}
 .feat p{margin:0;color:var(--muted);line-height:1.6}
 
@@ -233,8 +297,39 @@ input:focus,textarea:focus{border-color:rgba(124,58,237,.65);box-shadow:0 0 0 3p
 .form__row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 button.btn{cursor:not-allowed;opacity:.55}
 
-.footer{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
-.footer__inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.footer{
+  margin-top: 90px;
+  padding: 6px 0;
+  background: rgba(255,255,255,.02);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.footer__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: row;        /* horizontal layout */
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+
+  text-align: left;
+}
+
+.footer__inner > div:last-child{
+  text-align: right;
+}
+#contact{
+  padding-bottom: 0;
+}
+
+
+.footer .muted{
+  font-size: 11px;
+}
 
 /* WordPress body snippet styles (prefixed ng-*) */
 .ng-container{max-width:1200px;margin:0 auto;padding:0 20px}
@@ -302,12 +397,6 @@ button.btn{cursor:not-allowed;opacity:.55}
     gap: 10px;
     padding: 10px 0;
   }
-/* Desktop: keep hero headline on one line */
-{
-  .hero h1{
-    
-  }
-}
 
   .brand__logo{ height: 26px; }
 
@@ -373,28 +462,7 @@ button.btn{cursor:not-allowed;opacity:.55}
   letter-spacing: -0.02em;
 }
 
-/* DESKTOP: force single line */
-{
-  .hero h1,
-  .hero-title{
-    white-space: nowrap;
-  }
-}
 
-/* BELOW desktop: allow wrapping */
-{
-  .hero h1,
-  .hero-title{
-    white-space: normal;
-  }
-}
-
-
-  .hero h1{
-    font-size: 34px;
-    line-height: 1.1;
-  }
-  
   
   @media (min-width: 1200px){
   .hero-title{
@@ -507,13 +575,14 @@ button.btn{cursor:not-allowed;opacity:.55}
 .contact-item:first-of-type{ border-top: 0; }
 
 .contact-item .label{
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--muted);
   padding-top: 2px;
   opacity: .85;
 }
+
 
 .contact-item a,
 .contact-item span{
@@ -630,10 +699,7 @@ button.btn{cursor:not-allowed;opacity:.55}
 }
 
 
-.hero.play #heroLogo{
-  animation: fadeInOnly 5900ms ease-out forwards;
-  animation-delay: 5400ms;
-}
+
 
 
 #heroEyebrow{
@@ -660,8 +726,8 @@ button.btn{cursor:not-allowed;opacity:.55}
 
 
 .hero.play #heroTitle{
-  animation: fadeInOnly 700ms ease-out forwards;
-  animation-delay: 100ms;
+  animation: fadeInOnly 1700ms ease-out forwards;
+  animation-delay: 900ms;
 }
 
 
@@ -681,20 +747,20 @@ button.btn{cursor:not-allowed;opacity:.55}
   position: relative; /* ensure centering math is stable */
 }
 
-.
+
 
 
 
 /* When playing: logo anim (graceful) */
 .hero.play #heroLogo{
-  animation: ngLogoIn 1700ms cubic-bezier(.2,.9,.2,1) forwards;
-  animation-delay: 400ms;
+  animation: ngLogoIn 14700ms cubic-bezier(.2,.9,.2,1) forwards;
+  animation-delay: 5000ms;
 }
 
 
 .hero.play #heroEyebrow{
   animation: fadeInOnly 700ms ease-out forwards;
-  animation-delay: 600ms;
+  animation-delay: 900ms;
 }
 
 
@@ -730,8 +796,8 @@ button.btn{cursor:not-allowed;opacity:.55}
 
 /* Subtitle words start after title/logo */
 .hero.play #heroSub .ng-word{
-  animation: ngWordIn 2400ms cubic-bezier(.2,.9,.2,1) forwards;
-  animation-delay: calc(var(--i) * 520ms + 1200ms);
+  animation: ngWordIn 400ms cubic-bezier(.2,.9,.2,1) forwards;
+  animation-delay: calc(var(--i) * 220ms + 3200ms);
   margin-right: 0.6ch;   /* ← spacing control */
 }
 
@@ -741,7 +807,7 @@ button.btn{cursor:not-allowed;opacity:.55}
 
 /* CTA appears last */
 .hero.play #heroCta{
-  animation: ngFadeUp 900ms cubic-bezier(.2,.9,.2,1) forwards;
+  animation: ngFadeUp 9900ms cubic-bezier(.2,.9,.2,1) forwards;
   animation-delay: 9200ms;
 }
 
@@ -936,7 +1002,7 @@ button.btn{cursor:not-allowed;opacity:.55}
 }
 /* ABOUT: keep title + tagline together (no far-right push) */
 #about .section__head--about{
-  display: flex;
+  display: block;
   justify-content: flex-start;  /* IMPORTANT */
   align-items: baseline;
   gap: 14px;
@@ -1040,7 +1106,7 @@ button.btn{cursor:not-allowed;opacity:.55}
 }
 /* ===== Anchor offset (no black bar) ===== */
 html{
-  scroll-padding-top: calc(var(--topbar-h) + 22px);
+  scroll-padding-top: calc(var(--topbar-h) + 14px);
 }
 
 /* ===== ABOUT: center and constrain ===== */
@@ -1053,4 +1119,383 @@ html{
 #about{
   padding-top: 72px;
   padding-bottom: 72px;
+}
+/* ===== MOBILE ONLY (phones) ===== */
+@media (max-width: 480px) {
+	
+	
+	html, body {
+  overflow-x: hidden;
+}
+  /* ===== MOBILE HEADER ONLY ===== */
+
+  /* remove small logo + “Nextgen Technologies EST” + tagline */
+  .topbar .brand{
+    display: none;
+  }
+
+  /* shrink header bar height */
+  :root{
+    --topbar-h: 52px;
+  }
+
+  .topbar__inner{
+    height: 100%;
+    padding: 0;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:nowrap;      /* NO WRAP */
+    overflow:hidden;       /* NO SCROLL */
+    gap:6px;
+  }
+
+  .nav a{
+    white-space:nowrap;
+    font-size:11px;
+    padding:6px 6px;
+    line-height:1;
+  }
+
+
+
+  .topbar .container{
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+
+  /* normalize header height completely */
+  .topbar{
+    height: 52px;
+    min-height: 52px;
+  }
+
+
+
+  /* 1) kill desktop horizontal offsets that cause overflow */
+  :root{
+    --hero-x-offset: 0px;
+    --hero-logo-x-offset: 0px;
+  }
+  .hero-left{ transform: none; }
+  #heroLogo{
+    position: relative;
+    display: block;
+    margin: 22px auto 0;
+    left: 0;
+    top: 0;
+    width: 240px;
+    max-width: 78vw;
+    height: auto;
+  }
+
+  .hero-right{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.hero,
+.hero-layout,
+.hero-left,
+.hero-right{
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+
+/* hero title wrapping fix – mobile */
+.hero h1{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  padding: 0 12px;
+}
+
+
+
+  /* 2) force hero into single column */
+  .hero-layout{
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 18px;
+  }
+
+
+  
+    /* hero eyebrow – single line; lead can wrap on mobile */
+  .eyebrow{
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    max-width: 98vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: .03em;
+  }
+
+  .lead{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .lead{
+    font-size: 14px;
+  }
+/* MOBILE: eyebrow + sub — left aligned; eyebrow stays single line */
+#heroEyebrow{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: left !important;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+  max-width: 98vw;
+  font-size: 10px;
+  letter-spacing: .03em;
+}
+
+#heroSub{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: left !important;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  max-width: 560px;
+  font-size: 13px;
+}
+
+
+  .hero h1{
+  font-size: 28px;
+  line-height: 1.12;
+  max-width: 92vw;
+  margin: 0 auto 10px;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  padding: 0 12px;
+}
+.hero-left{
+  text-align: center;
+}
+
+
+  .hero p{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  /* footer: one line only on mobile */
+  .footer__inner{
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .footer__inner > div:first-child{
+    display: none;
+  }
+  /* footer: tighten spacing and width on mobile */
+  .footer{
+  margin-top: 1px;
+  padding-top: 30;
+  height: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.footer__inner{
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 1px;
+  font-size: 11px;
+  line-height: 1;
+}
+
+
+
+/* 4) hero CTA buttons – horizontal */
+  /* 4) CTA buttons – one line */
+  .cta{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .cta .btn{
+    white-space: nowrap;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+
+  }
+
+
+
+
+
+
+/* =========================================================
+   MOBILE FIXES ONLY (does not affect desktop)
+   ========================================================= */
+@media (max-width: 480px) {
+
+  /* HERO: logo centered + +30% size */
+  .hero-right{ justify-content: center !important; }
+  .hero-logo-anim{
+    width: 548px;         /* ~30% up from 160px */
+    max-width: 72vw;
+    height: auto;
+    opacity: 0.9;
+  }
+#heroLogo{
+  margin: 48px auto 0px !important;
+  left: -7px !important;
+  top: 0 !important;
+  width: 550px !important;     /* <-- change this */
+  max-width: 78vw !important;  /* keep it responsive */
+  height: auto !important;
+}
+
+
+.hero-left{
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 12px;
+
+  position: relative;
+  top: -18px;   /* move hero text up */
+}
+
+ 
+ 
+ .hero h1{ 
+  text-align: left; 
+  padding: 0; 
+  margin: 0 0 10px -7px; 
+}
+
+
+ #heroEyebrow{
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 10px;      /* adjust if needed */
+}
+
+#heroSub,
+.lead{
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+
+  /* CTA: left aligned and can wrap */
+  .cta{
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 10px;
+  }
+  .cta .btn{ font-size: 13px; padding: 10px 12px; }
+
+  /* ABOUT: push below fold on mobile + hide tagline line */
+  #about{ margin-top: 220px; }
+  #about .section__head--about p{ display: none !important; }
+
+  /* WHY CHOOSE: colored icons (mobile only) */
+  .feat__icon{
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: none !important;
+    background: rgba(255,255,255,.06) !important;
+  }
+
+  .feat__svg{
+    display: block !important;
+    width: 22px;
+    height: 22px;
+    opacity: .95;
+  }
+
+  /* per-card color accents */
+  .grid--3 .feat:nth-child(1) .feat__icon{ background: linear-gradient(135deg, rgba(59,130,246,.30), rgba(34,197,94,.18)) !important; color: rgba(255,255,255,.96); }
+  .grid--3 .feat:nth-child(2) .feat__icon{ background: linear-gradient(135deg, rgba(34,197,94,.26), rgba(16,185,129,.16)) !important; color: rgba(255,255,255,.96); }
+  .grid--3 .feat:nth-child(3) .feat__icon{ background: linear-gradient(135deg, rgba(236,72,153,.22), rgba(168,85,247,.18)) !important; color: rgba(255,255,255,.96); }
+  .grid--3 .feat:nth-child(4) .feat__icon{ background: linear-gradient(135deg, rgba(245,158,11,.22), rgba(59,130,246,.16)) !important; color: rgba(255,255,255,.96); }
+  .grid--3 .feat:nth-child(5) .feat__icon{ background: linear-gradient(135deg, rgba(14,165,233,.22), rgba(99,102,241,.16)) !important; color: rgba(255,255,255,.96); }
+  .grid--3 .feat:nth-child(6) .feat__icon{ background: linear-gradient(135deg, rgba(168,85,247,.22), rgba(34,197,94,.14)) !important; color: rgba(255,255,255,.96); }
+
+/* CONTACT CARD: sentence case labels */
+  .contact-item .label{
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-size: 12px;
+  }
+.footer{
+  margin-top: 90px;
+  padding: 6px 0;
+  background: rgba(255,255,255,.02);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.footer__inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  padding: 0 16px;
+}
+#contact{ padding-bottom: 0 !important; }
+
+.section{ padding: 30px 0 !important; }
+
+.footer .muted{ font-size: 11px; }
+
+#about, #solutions, #why, #projects, #contact{
+  scroll-margin-top: 52px;
+}
+.hero.play #heroSub .ng-word{
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+.hero.play #heroSub{
+  opacity: 0;
+  animation: fadeInOnly 700ms ease-out forwards;
+  animation-delay: 3500ms !important;
 }
